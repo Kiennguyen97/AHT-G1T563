@@ -20,6 +20,14 @@
                     <label>Display Text</label>
                     <comment>This text will display on the frontend.</comment>
                 </field> -->
+                <field id="pagetitle" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PageTitle: </label>
+                    <comment>Title for Helloworld-Page: Default :Kien_Helloworld-Page</comment>
+                </field>
+                <field id="url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>URL-Key: </label>
+                    <comment>URl for Helloworld-Page: Default :helloworld/index/index</comment>
+                </field>
             </group>
         </section>
         

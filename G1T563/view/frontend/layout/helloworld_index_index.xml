@@ -3,4 +3,9 @@
     <referenceContainer name="content">
         <block template="index.phtml" class="AHT\G1T563\Block\Index" name="aht_g1t563_block_index"/>
     </referenceContainer>
+    <referenceBlock name="breadcrumbs" template="Magento_Catalog::product/breadcrumbs.phtml">
+        <arguments>
+            <argument name="viewModel" xsi:type="object">AHT\G1T563\ViewModel\Product\Breadcrumbs</argument>
+        </arguments>
+    </referenceBlock>
 </page>

@@ -5,6 +5,7 @@
             <general>
                 <enabled>1</enabled>
                 <!-- <display_text>AHT HelloWorld Module Text</display_text> -->
+                <url>aht</url>
             </general>
         </helloworld>
     </default>
