@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace AHT\G1T563\Controller;
 
 /**
@@ -94,6 +96,10 @@ class Router implements \Magento\Framework\App\RouterInterface
     public function match(\Magento\Framework\App\RequestInterface $request)
     {
         $identifier = trim($request->getPathInfo(), '/');
+        $url_key = $this->_scopeConfig->getValue('helloworld/general/url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE) !== null
+            ? $this->_scopeConfig->getValue('helloworld/general/url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)
+            : self::DEFAULT_TITLE;
+
 
         $condition = new \Magento\Framework\DataObject(['identifier' => $identifier, 'continue' => true]);
         $this->_eventManager->dispatch(
@@ -101,14 +107,10 @@ class Router implements \Magento\Framework\App\RouterInterface
             ['router' => $this, 'condition' => $condition]
         );
         $identifier = $condition->getIdentifier();
-        
-        $url_key = $this->_scopeConfig->getValue('helloworld/general/url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-        if (!$url_key) {
-            $identifier = self::DEFAULT_URL;
-        }else {
-            $identifier = $url_key;
+        if ($identifier != $url_key) {
+            # code...
+            return null;
         }
-
 
         $request->setModuleName('helloworld')->setControllerName('index')->setActionName('index');
         $request->setAlias(\Magento\Framework\Url::REWRITE_REQUEST_PATH_ALIAS, $identifier);
